@@ -4,7 +4,7 @@
 
 ### Your F1 Intelligence Hub
 
-**The only open-source F1 dashboard that combines real telemetry, 
+**The web-based F1 dashboard that combines real telemetry, 
 AI analysis, fantasy picks, and driver career comparisons 
 — built for fans who want more than just race results.**
 
@@ -19,9 +19,9 @@ AI analysis, fantasy picks, and driver career comparisons
 
 ---
 
-## 🤔 Why I Built This
+## 🤔 1. Why I Built This
 
-I'm an F1 fan and CE student. Every race weekend I found myself 
+I'm an F1 fan and CSE student. Every race weekend I found myself 
 switching between 5 different tabs — the official F1 app for 
 standings, a Reddit thread for analysis, a spreadsheet for 
 fantasy picks, and YouTube for race breakdowns.
@@ -293,18 +293,15 @@ boxbox/
 │   ├── f1_data.py       # FastF1 data functions
 │   ├── ai_advisor.py    # Gemini AI integration
 │   ├── requirements.txt
-│   ├── render.yaml      # Render deployment config
-│   └── .env.example
-├── frontend/
-│   ├── src/
-│   │   ├── components/  # Reusable UI components
-│   │   ├── pages/       # Route pages
-│   │   ├── services/    # API layer (api.js)
-│   │   ├── utils/       # Helpers + constants
-│   │   └── context/     # React context (ModeContext)
-│   ├── vercel.json      # Vercel deployment config
-│   └── .env.example
-└── screenshots/
+│   └── render.yaml      # Render deployment config
+└── frontend/
+    ├── src/
+    │   ├── components/  # Reusable UI components
+    │   ├── pages/       # Route pages
+    │   ├── services/    # API layer (api.js)
+    │   ├── utils/       # Helpers + constants
+    │   └── context/     # React context (ModeContext)
+    └── vercel.json      # Vercel deployment config
 
 ---
 
@@ -329,25 +326,6 @@ boxbox/
 - [ ] User accounts + saved fantasy teams
 - [ ] More circuit SVG maps
 - [ ] 2026 season data integration
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! This project is 
-built for the F1 community.
-
-1. Fork the repo
-2. Create a branch: `git checkout -b feat/your-feature`
-3. Commit: `git commit -m "feat: add your feature"`
-4. Push: `git push origin feat/your-feature`
-5. Open a Pull Request
-
-Good first issues:
-- Add more circuit SVG maps
-- Add more F1 legend drivers to Career page
-- Improve Beginner Mode explanations
-- Add more historical race data
 
 ---
 
@@ -385,9 +363,5 @@ POST /api/career-compare      Career comparison
 <div align="center">
 
 **Built with ❤️ for F1 fans everywhere**
-
-If BoxBox helped you dominate F1 Fantasy or 
-win a pub quiz about Hamilton vs Schumacher,
-consider giving it a ⭐
 
 </div>
