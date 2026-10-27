@@ -7,7 +7,6 @@ import ModeToggle from './ModeToggle';
 export default function Navbar() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [stars, setStars] = useState(null);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   useEffect(() => {
@@ -25,28 +24,6 @@ export default function Navbar() {
     if (typeof window === 'undefined') return;
     window.dispatchEvent(new CustomEvent('mobileMenuToggle', { detail: { open: mobileMenuOpen } }));
   }, [mobileMenuOpen]);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    fetch('https://api.github.com/repos/RAJJBHALARA/Box-Box', {
-      headers: { Accept: 'application/vnd.github+json' }
-    })
-      .then((r) => {
-        if (!r.ok) throw new Error('GitHub API failed');
-        return r.json();
-      })
-      .then((d) => {
-        if (!cancelled && typeof d?.stargazers_count === 'number') {
-          setStars(d.stargazers_count);
-        }
-      })
-      .catch(() => {});
-
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   const links = [
     { name: 'Home', path: '/', navId: 'home' },
@@ -164,51 +141,6 @@ export default function Navbar() {
           <div data-nav="mode-toggle">
             <ModeToggle compact />
           </div>
-
-          <a
-            href="https://github.com/RAJJBHALARA/Box-Box"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center"
-            style={{
-              gap: 5,
-              padding: '7px 12px',
-              background: 'rgba(255,255,255,0.06)',
-              border: '1px solid rgba(255,255,255,0.12)',
-              borderRadius: 100,
-              color: 'white',
-              textDecoration: 'none',
-              fontSize: 12,
-              fontWeight: 600,
-              transition: 'all 0.2s',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.12)';
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
-            }}
-          >
-            <span>⭐</span>
-            <span className="hidden xl:inline">Star</span>
-            {stars !== null && (
-              <span
-                className="hidden xl:inline-flex"
-                style={{
-                  background: 'rgba(255,255,255,0.1)',
-                  borderRadius: 100,
-                  padding: '1px 6px',
-                  fontSize: 11,
-                }}
-              >
-                {stars.toLocaleString()}
-              </span>
-            )}
-          </a>
 
           <motion.button
             animate={{ 
@@ -335,47 +267,6 @@ export default function Navbar() {
               >
                 <ModeToggle compact />
               </motion.div>
-
-              <motion.a
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                href="https://github.com/RAJJBHALARA/Box-Box"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  document.body.style.overflow = 'unset';
-                }}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: '12px 24px',
-                  background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 100,
-                  color: 'white',
-                  textDecoration: 'none',
-                  fontSize: 15,
-                  fontWeight: 600
-                }}
-              >
-                ⭐ Star on GitHub
-                {stars !== null && (
-                  <span
-                    style={{
-                      background: 'rgba(255,215,0,0.15)',
-                      color: '#FFD700',
-                      borderRadius: 100,
-                      padding: '2px 8px',
-                      fontSize: 12
-                    }}
-                  >
-                    {stars.toLocaleString()} ★
-                  </span>
-                )}
-              </motion.a>
 
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
