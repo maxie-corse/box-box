@@ -86,41 +86,71 @@ export default function RaceAnalysis() {
     return () => { active = false; };
   }, [gp]);
 
+  
   useEffect(() => {
     if (!races.includes(gp)) return;
 
     let active = true;
+
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+
+      const shortGp = gp.replace(' GP', '').replace(' CIRCUIT', '').trim();
+
       try {
-        setLoading(true);
-        setError(null);
-        // Format names matching backend requirements
-        const shortGp = gp.replace(' GP', '').replace(' CIRCUIT', '').trim();
-        const shortSession = session === 'RACE' ? 'R' : session === 'QUALIFYING' ? 'Q' : session === 'SPRINT' ? 'S' : session;
-        
-        const [lapsRes, tireRes] = await Promise.all([
-          getLapTimes(parseInt(season), shortGp, shortSession),
-          getTireStrategy(parseInt(season), shortGp)
+        const [lapsResult, tireResult] = await Promise.allSettled([
+          getLapTimes(
+            parseInt(season, 10),
+            shortGp,
+            session === 'RACE' ? 'R' :
+            session === 'QUALIFYING' ? 'Q' :
+            session === 'SPRINT' ? 'S' : session
+          ),
+          getTireStrategy(parseInt(season, 10), shortGp)
         ]);
-        
-        if (active) {
-          setLapData(lapsRes.data || { drivers: [], laps: {} });
-          setTireStrategy(tireRes.data?.data || []);
+
+        if (!active) return;
+
+        if (lapsResult.status === 'fulfilled') {
+          console.log('Lap times API response:', lapsResult.value.data);
+          setLapData(lapsResult.value.data || { drivers: [], laps: {} });
+        } else {
+          console.error('Lap times request failed:', lapsResult.reason);
+          setLapData({ drivers: [], laps: {} });
+        }
+
+        if (tireResult.status === 'fulfilled') {
+          console.log('Tire strategy API response:', tireResult.value.data);
+          setTireStrategy(tireResult.value.data?.data || []);
+        } else {
+          console.error('Tire strategy request failed:', tireResult.reason);
+          setTireStrategy([]);
+        }
+
+        if (
+          lapsResult.status === 'rejected' &&
+          tireResult.status === 'rejected'
+        ) {
+          setError('Could not load lap times or tire strategy.');
         }
       } catch (err) {
         if (active) {
-          setError(err.message === 'RATE_LIMIT' ? 'Too many requests. Wait 1 minute.' : 
-                    err.message === 'AUTH_ERROR' ? 'Authentication failed.' : 
-                    err.message === 'NO_DATA' ? 'Data not available for this selection.' : 
-                    'Something went wrong. Try again.');
+          console.error('Race Analysis error:', err);
+          setError('Something went wrong loading race data.');
         }
       } finally {
         if (active) setLoading(false);
       }
     };
+
     fetchData();
-    return () => { active = false; };
+
+    return () => {
+      active = false;
+    };
   }, [season, gp, session, races]);
+
 
   // Generate SVG path string from array of lap times
   const generatePath = (laps) => {
