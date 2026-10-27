@@ -19,6 +19,12 @@ AI analysis, fantasy picks, and driver career comparisons
 
 ---
 
+## Demo Video Link
+
+https://drive.google.com/drive/folders/1brpJAXYKQwYaOf566qsu7lQTC01CepAF?usp=drive_link
+
+---
+
 ## 🤔 1. Why I Built This
 
 I'm an F1 fan and CSE student. Every race weekend I found myself 
