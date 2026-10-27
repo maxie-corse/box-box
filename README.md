@@ -337,6 +337,7 @@ Once running, full API docs available at:
 `http://localhost:8000/docs`
 
 Key endpoints:
+```
 GET  /api/health              Health check
 GET  /api/races?year=2025     Race calendar
 GET  /api/lap-times           Lap time data
@@ -347,7 +348,7 @@ GET  /api/career?driver=      Career stats
 GET  /api/standings           Championship
 POST /api/fantasy-picks       AI fantasy picks
 POST /api/career-compare      Career comparison
-
+```
 
 ---
 
