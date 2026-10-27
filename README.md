@@ -240,8 +240,8 @@ to ensure pages fully unmount before next page mounts.
 
 ### Backend Setup
 ```bash
-git clone https://github.com/RAJJBHALARA/Box-Box.git
-cd boxbox/backend
+git clone https://github.com/maxie-corse/box-box.git
+cd box-box/backend
 
 python -m venv venv
 # Windows:

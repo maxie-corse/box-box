@@ -43,15 +43,20 @@ app.add_middleware(
 )
 
 # API Key Verification Dependency
-API_SECRET_KEY = os.getenv("API_SECRET_KEY", "fallback_dev_key")
-async def verify_api_key(request: Request):
-    """Enforce X-API-Key header on every route strictly as requested."""
-    api_key = request.headers.get("X-API-Key")
-    if not api_key:
-        raise HTTPException(status_code=403, detail="API key is missing")
-    if api_key != API_SECRET_KEY:
-        raise HTTPException(status_code=403, detail="Invalid API key")
-    return api_key
+# API_SECRET_KEY = os.getenv("API_SECRET_KEY", "fallback_dev_key")
+# async def verify_api_key(request: Request):
+#     """Enforce X-API-Key header on every route strictly as requested."""
+#     api_key = request.headers.get("X-API-Key")
+#     if not api_key:
+#         raise HTTPException(status_code=403, detail="API key is missing")
+#     if api_key != API_SECRET_KEY:
+#         raise HTTPException(status_code=403, detail="Invalid API key")
+#     return api_key
+
+# Public dashboard: no browser-side shared secret.
+# Keep API_SECRET_KEY private for any future server-to-server authentication.
+async def verify_api_key():
+    return None
 
 # Event on startup
 @app.on_event("startup")

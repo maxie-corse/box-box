@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000', // Update this for production
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000', // Update this for production
   timeout: 60000, // Long timeout since AI processing or fastf1 might take a while
 });
 
@@ -66,10 +66,10 @@ export const fetchCareerComparison = async (driver1Id, driver2Id) => {
 };
 
 // Add interceptor to include API Key
-api.interceptors.request.use(config => {
-  config.headers['X-API-Key'] = 'fallback_dev_key'; // Default local dev key
-  // We can let the environment override later
-  return config;
-});
+// api.interceptors.request.use(config => {
+//   config.headers['X-API-Key'] = 'fallback_dev_key'; // Default local dev key
+//   // We can let the environment override later
+//   return config;
+// });
 
 export default api;
