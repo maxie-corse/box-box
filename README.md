@@ -368,12 +368,6 @@ GET  /api/standings           Championship
 POST /api/fantasy-picks       AI fantasy picks
 POST /api/career-compare      Career comparison
 
----
-
-## 📝 License
-
-MIT License — free to use, modify, and distribute.
-See [LICENSE](LICENSE) for details.
 
 ---
 
@@ -395,7 +389,5 @@ See [LICENSE](LICENSE) for details.
 If BoxBox helped you dominate F1 Fantasy or 
 win a pub quiz about Hamilton vs Schumacher,
 consider giving it a ⭐
-
-[![Star History](https://img.shields.io/github/stars/RAJJBHALARA/Box-Box?style=social)](https://github.com/RAJJBHALARA/Box-Box)
 
 </div>
