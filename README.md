@@ -276,13 +276,17 @@ npm run dev
 ### Environment Variables
 
 **backend/.env**
+```
 GEMINI_API_KEY=your_gemini_api_key
 API_SECRET_KEY=any_random_32_char_string
 ALLOWED_ORIGINS=http://localhost:5173
+```
 
 **frontend/.env.local**
+```
 VITE_API_URL=http://localhost:8000
 VITE_API_KEY=same_as_API_SECRET_KEY_above
+```
 
 ---
 
