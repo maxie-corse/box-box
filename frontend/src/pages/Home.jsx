@@ -197,7 +197,7 @@ export default function Home() {
             <img
               className="w-full h-full object-cover"
               alt="F1 car on track"
-              src="https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?q=80&w=2000&auto=format&fit=crop"
+              src="/images/f1-hero.jpg"
               loading="lazy"
               decoding="async"
             />
