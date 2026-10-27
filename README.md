@@ -8,7 +8,7 @@
 AI analysis, fantasy picks, and driver career comparisons 
 — built for fans who want more than just race results.**
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-box--box--srujana.vercel.app-E10600?style=for-the-badge)]()
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-box--box--srujana.vercel.app-E10600?style=for-the-badge)](https://box-box-srujana.vercel.app)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Python_3.11-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
 [![Gemini](https://img.shields.io/badge/AI-Gemini_1.5_Pro-4285F4?style=for-the-badge&logo=google)](https://ai.google.dev)
