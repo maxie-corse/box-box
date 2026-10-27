@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const defaultHeaders = {
-  "X-API-Key": import.meta.env.VITE_API_KEY || "fallback_dev_key",
   "Content-Type": "application/json"
 }
 
