@@ -287,6 +287,7 @@ VITE_API_KEY=same_as_API_SECRET_KEY_above
 ---
 
 ## 📁 Project Structure
+```
 boxbox/
 ├── backend/
 │   ├── main.py          # FastAPI app + all endpoints
@@ -302,6 +303,7 @@ boxbox/
     │   ├── utils/       # Helpers + constants
     │   └── context/     # React context (ModeContext)
     └── vercel.json      # Vercel deployment config
+```
 
 ---
 
